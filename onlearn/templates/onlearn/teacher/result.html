@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}course{% endblock %}
+{% block body %}
+
+<!-- Page info -->
+<div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/1.jpg' %}">
+	<div class="container">
+		<div class="site-breadcrumb">
+			<a href="#">Home</a>
+			<span>exam_results</span>
+		</div>
+	</div>
+</div>
+<!-- Page info end -->
+
+<h1 style="color:#CC0000;font-size:300%;text-align:center;">exam results</h1>
+<body style="background-image:url('');font-size:150%;">
+
+
+<h1 >Your score is {{score}}</h1>
+<div> <a href="{% url 'certificate' %}" class="site-btn mr-3 mb-3 mb-md-0">certificate is here</a></div>
+
+
+{% endblock %}

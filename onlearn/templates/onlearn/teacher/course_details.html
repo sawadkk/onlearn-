@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}course_details{% endblock %}
+{% block body %}
+<style type="text/css">
+	video {
+  width: 100%;
+  height: auto;
+}
+ .course_preview {
+	display: inline-block;
+	background: black;
+	color: black;
+	font-size: 14px;
+	font-weight: 500;
+	padding: 4px 15px;
+	margin-bottom: 20px;
+}
+</style>
+
+	<!-- Page info -->
+	<div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/1.jpg' %}">
+		<div class="container">
+			<div class="site-breadcrumb">
+				<a href="#">Home</a>
+				<span>course_details</span>
+			</div>
+		</div>
+	</div>
+	<!-- Page info end -->
+
+	<section class="single-course spad pb-0">
+		{% for i in datas %}
+		<div class="container">
+			<div class="course-meta-area">
+				<div class="row">
+					<div class="col-lg-10 offset-lg-1">
+						<!-- course_preview -->
+						<div class="course_preview">			
+			<video controls>
+  			<source src="{{i.video_preview.url}}" type=video/mp4></source> 
+  
+  			Your browser does not support the video tag.
+			</video></div>
+						<h3>{{i.title}}</h3>
+						<div class="course-metas">
+							<div class="course-meta">
+
+								<div class="course-author">
+									<div class="ca-pic set-bg" data-setbg="{{i.tumbnail.url}}" style="background-image: url(&quot;img/authors/2.jpg&quot;);"></div>
+									<h6>Teacher</h6>
+									<p>William Parker, <span>Developer</span></p>
+								</div>
+							</div>
+							<div class="course-meta">
+								<div class="cm-info">
+									<h6>Category</h6>
+									<p>Development</p>
+								</div>
+							</div>
+							<div class="course-meta">
+								<div class="cm-info">
+									<h6>Students</h6>
+									<p>120 Registered Students</p>
+								</div>
+							</div>
+							<div class="course-meta">
+								<div class="cm-info">
+									<h6>Reviews</h6>
+									<p>2 Reviews <span class="rating">
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star is-fade"></i>
+									</span></p>
+								</div>
+							</div>
+						</div>
+						<form action="{% url 'addcart' i.pk %}" method="POST">
+							{% csrf_token %}
+						<a href="#" class="site-btn price-btn">{{i.price}}</a>
+						<input type="submit" class="site-btn buy-btn" value="add to cart">
+						<a href="{% url 'buy' i.pk %}"class="site-btn buy-btn">buy</a>
+						
+						</form>
+					</div>
+				</div>
+			</div>
+
+
+
+						
+				<div class="row">
+				<div class="col-lg-10 offset-lg-1 course-list">
+					<div class="cl-item">
+						<h4>{{i.short_description}}</h4>
+						<p>{{i.outcome}}</p>
+					</div>
+					<div class="cl-item">
+						<h4>Certification</h4>
+						<p>Phasellus sollicitudin et nunc eu efficitur. Sed ligula nulla, molestie quis ligula in, eleifend rhoncus ipsum. Donec ultrices, sem vel efficitur molestie, massa nisl posuere ipsum, ut vulputate mauris ligula a metus. Aenean vel congue diam, sed bibendum ipsum. Nunc vulputate aliquet tristique. Integer et pellentesque urna. Lorem ipsum dolor sit amet, consectetur. Phasellus sollicitudin et nunc eu efficitur. Sed ligula nulla, molestie quis ligula in, eleifend rhoncus ipsum. Donec ultrices, sem vel efficitur molestie, massa nisl posuere ipsum.</p>
+					</div>
+					<div class="cl-item">
+						<h4>The Instructor</h4>
+						<p>Sed ligula nulla, molestie quis ligula in, eleifend rhoncus ipsum. Donec ultrices, sem vel efficitur molestie, massa nisl posuere ipsum, ut vulputate mauris ligula a metus. Aenean vel congue diam, sed bibendum ipsum. Nunc vulputate aliquet tristique. Integer et pellentesque urna. Lorem ipsum dolor sit amet, consectetur. Phasellus sollicitudin et nunc eu efficitur. Sed ligula nulla, molestie quis ligula in, eleifend rhoncus ipsum. Donec ultrices, sem vel efficitur molestie, massa nisl posuere ipsum, ut vulputate mauris ligula a metus. </p>
+					</div>
+						<div class="cl-item">
+						<h4>review</h4>
+						<p>{i.course.review}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+
+	</section>
+
+
+</div>
+</div>
+</div>
+</div>
+</section>
+
+{% endblock %}

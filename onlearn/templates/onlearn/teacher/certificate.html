@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}course{% endblock %}
+{% block body %}
+
+<!-- Page info -->
+<div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/1.jpg' %}">
+	<div class="container">
+		<div class="site-breadcrumb">
+			<a href="#">Home</a>
+			<span>certificate</span>
+		</div>
+	</div>
+</div>
+<!-- Page info end -->
+	{% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div align="center"><TABLE width=800 align="center">
+<TABLE borderColor=black border=3>
+<TBODY>
+<TR><TD width="100%" bgColor=#ffffff +90>
+<CENTER><B>certificate of </B></CENTER>
+<CENTER><STRONG>
+<H1><FONT size=6>{{course.id}} course</H1></FONT></STRONG></CENTER>
+<CENTER></CENTER><BR><img SRC="{% static 'img/onlearn logo.png' %}"  hspace=50 vspace=3 align=left><BR><CENTER>
+    <strong style="font-size:30pt;">{{ user.username }}</strong>
+<H3><STRONG><FONT size=4>has satisfactorily completed</H3></CENTER></FONT>
+    <CENTER><h1>Quiz With a score of : {{score}} Point</h1>
+<H3><STRONG><FONT size=4>awarded by the</H3></CENTER></FONT>
+<CENTER>
+<H3><STRONG><FONT size=6>instructor</H3></STRONG></CENTER></FONT>
+<CENTER>
+<H3><STRONG><FONT size=4>kannur City, kerala </H3></STRONG></CENTER>
+<CENTER>
+<H3><STRONG><FONT size=2><VAR>Accredited by the onlearn education inc</VAR></H3></STRONG></CENTER></FONT><BR>
+</TD></TR></TBODY></TABLE></TABLE></div>
+
+{% endblock %}

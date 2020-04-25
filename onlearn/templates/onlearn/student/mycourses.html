@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}mycourses{% endblock %}
+{% block body %}
+
+	<!-- Page info -->
+<div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/1.jpg' %}">
+<div class="container">
+<div class="site-breadcrumb">
+<a href="#">Home</a>
+<span>mycourses</span>
+</div>
+</div>
+</div>
+<!-- Page info end -->
+	<!-- Page -->
+	<section class="contact-page spad pb-0">
+		<div class="container">
+			<div class="row">
+				
+					
+						
+				<!-- course -->
+				
+				{% for i in datas %}
+				<div class="mix col-lg-3 col-md-4 col-sm-6 finance">
+				
+					<div class="course-item">
+						<div class="course-thumb set-bg" data-setbg="{{i.course.thumbnail.url}}">
+							<div class="price">enroled</div>
+						</div>
+						<div class="course-info">
+							<div class="course-text">
+								
+								
+								<p>Lorem ipsum dolor sit amet, consectetur</p>
+								
+
+								<div class="students">{{i.course.title}}</div>
+							</div>
+							<div class="course-author">
+								<div class="ca-pic set-bg" data-setbg="{% static 'img/authors/1.jpg' %}"></div>
+								<p>William Parker, <span>Developer</span></p>
+								<a href="{% url 'course' i.course.pk %}" class="site-btn btn-dark mr-3 mb-3 mb-md-0">resume</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+				
+
+
+
+
+
+
+{% endblock %}

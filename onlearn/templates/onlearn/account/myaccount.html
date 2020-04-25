@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}myaccount{% endblock %}
+{% block body %}
+
+	<!-- Page info -->
+	<div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/1.jpg' %}">
+		<div class="container">
+			<div class="site-breadcrumb">
+				<a href="#">Home</a>
+				<span>myaccount</span>
+			</div>
+		</div>
+	</div>
+	<!-- Page info end -->
+
+<section class="search-section ss-other-page">
+		<div class="container">
+			<div class="search-warp">
+				<div class="section-title text-white">
+					<h2><span>my account</span></h2>
+				</div>
+				<div class="row">
+					<div class="col-lg-10 offset-lg-1">						
+						<!-- signup form -->
+						<form class="signup-form" action="{% url 'updatepassword' %}">
+						{% for i in datas %}
+							<h5><span><label>username: {{i.username}}</label></span></h5><br>
+							<h5><span><label>email: {{i.email}}</label></span></h5><br>
+							<h5><span><label>password: ******</label></span></h5><br>
+							
+							<button class="site-btn" type="submit">changepassword</button><br><br>
+							<a href="{% url 'delete_user' %}"><input class="site-btn" value="delete account"></a>
+						{% endfor %}
+
+						</form>
+						{% if messages %}
+  {% for msg in messages %}
+    <div class="alert alert-info alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      {{msg.message}}
+    </div>
+  {% endfor %}
+{% endif %}
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+{% endblock %}

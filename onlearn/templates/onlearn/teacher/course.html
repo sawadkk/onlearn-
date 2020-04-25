@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}course{% endblock %}
+{% block body %}
+
+<!-- Page info -->
+<div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/1.jpg' %}">
+	<div class="container">
+		<div class="site-breadcrumb">
+			<a href="#">Home</a>
+			<span>course_details</span>
+		</div>
+	</div>
+</div>
+<!-- Page info end -->
+
+
+
+	<!-- single course section -->
+	{% for i in datas %}
+	<section class="single-course spad pb-0">
+		<div class="container">
+			<div class="course-meta-area">
+				<div class="row">
+					<div class="col-lg-10 offset-lg-1">
+						<div class="course-note">Featured Course</div>
+						<h3>{{i.title}}</h3>
+						<div class="course-metas">
+							<div class="course-meta">
+								<div class="course-author">
+									<div class="ca-pic set-bg" data-setbg="img/authors/2.jpg"></div>
+									<h6>Teacher</h6>
+									<p>William Parker, <span>Developer</span></p>
+								</div>
+							</div>
+							<div class="course-meta">
+								<div class="cm-info">
+									<h6>Category</h6>
+									<p>Development</p>
+								</div>
+							</div>
+							<div class="course-meta">
+								<div class="cm-info">
+									<h6>Students</h6>
+									<p>120 Registered Students</p>
+								</div>
+							</div>
+							<div class="course-meta">
+								<div class="cm-info">
+									<a href=""><h6>review</h6></a>
+										<div>
+	<form action="{% url 'addreview' i.pk %}" method="post">
+		{% csrf_token %}
+		<input type="text" name="review" placeholder="add your review">
+		<input type="submit" value="submit">
+
+	</form>
+</div>
+
+									</span></p>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<!--course-->
+			<div class="row">
+				<div class="col-lg-10 offset-lg-1 course-list">
+					<div class="cl-item">
+						<div class="row">
+					<div class="col-lg-6 mb-4 mb-lg-0">
+						<!-- Accordions -->
+						<div id="accordion" class="accordion-area">
+							<div class="panel">
+								<div class="panel-header" id="headingOne">
+									<button class="panel-link active collapsed" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">introduction</button>
+								</div>
+								<div id="collapse1" class="collapse" aria-labelledby="headingOne" data-parent="#accordion" style="">
+									<div class="panel-body">
+									 <video controls>
+  										<source src="{{i.video_preview.url}}" type=video/mp4></source> 
+  
+  										Your browser does not support the video tag.
+									 </video>
+									</div>
+								</div>
+							</div>
+							<div class="panel">
+								<div class="panel-header" id="headingTwo">
+									<button class="panel-link" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">notes</button>
+								</div>
+								<div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+									<div class="panel-body">
+										<p>{{i.notes}}</p>
+									</div>
+								</div>
+							</div>
+							<div class="panel">
+								<div class="panel-header active" id="headingThree">
+									<button class="panel-link collapsed" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">questions</button>
+								</div>
+								<div id="collapse3" class="collapse" aria-labelledby="headingThree" data-parent="#accordion" style="">
+									<div class="panel-body">
+										<p>{{i.questions}}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+	<!-- single course section end -->
+
+
+
+
+
+
+	<!-- banner section -->
+	<section class="banner-section spad">
+		<div class="container">
+			<div class="section-title mb-0 pb-2">
+				<h2>register for exam</h2>
+				<p>register for exam if you completed the course</p>
+			</div>
+			<div class="text-center pt-5">
+				<a href="{% url 'exam' i.pk %}" class="site-btn">Register Now</a>
+			</div>
+		</div>
+	</section>
+	<!-- banner section end -->
+	{% endfor %}
+{% endblock %}

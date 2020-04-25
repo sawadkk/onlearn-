@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}signup{% endblock %}
+{% block body %}
+
+	<!-- Page info -->
+	<div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/1.jpg' %}">
+		<div class="container">
+			<div class="site-breadcrumb">
+				<a href="#">Home</a>
+				<span>signin</span>
+			</div>
+		</div>
+	</div>
+	<!-- Page info end -->
+
+<section class="search-section ss-other-page">
+		<div class="container">
+			<div class="search-warp">
+				<div class="section-title text-white">
+					<h2><span>signup</span></h2>
+				</div>
+				<div class="row">
+					<div class="col-lg-10 offset-lg-1">
+						<!-- search form -->
+<form class="signup-form" action="{% url 'signup' %}" method="POST">
+	{% csrf_token %}
+	<input type="text" placeholder="username" name="username">
+	<input type="text" class="last-s" placeholder="E-mail" name="email">
+	<input type="text" placeholder="password" name="password">
+	
+	<button class="site-btn btn-dark" type="submit">signup</button>
+	<a href="{% url 'loginform' %}"><input class="site-btn btn-dark" value="login"></a>
+	
+</form>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+
+{% endblock %}

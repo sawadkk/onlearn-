@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}on-learn{% endblock %}
+{% block body %}
+<!-- Page info -->
+<div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/1.jpg' %}">
+	<div class="container">
+		<div class="site-breadcrumb">
+			<a href="#">Home</a>
+			<span>course</span>
+		</div>
+	</div>
+</div>
+<!-- Page info end -->
+
+				<!-- course -->
+				{% if datas %}
+					{% for i in datas %}
+				<div class="mix col-lg-3 col-md-4 col-sm-6 finance">
+					
+					<div class="course-item">
+						<div class="course-thumb set-bg" data-setbg="{% static 'img/signup-bg.jpg' %}">
+							<div class="price">{{i.price}}</div>
+						</div>
+						<div class="course-info">
+							<div class="course-text">
+								
+								<h5>{{i.title}}</h5>
+								<p>{{i.short_description}}</p>
+								
+<!--{% url 'addcart' i.pk %}-->
+								<div class="students"><a href="{% url 'course_details' i.pk %}">course_details</a></div>
+							</div>
+							<div class="course-author">
+								<div class="ca-pic set-bg" data-setbg="{% static 'img/authors/1.jpg' %}"></div>
+								<p>William Parker, <span>Developer</span></p>
+							</div></a>
+						</div>
+					
+				</div></div>{% endfor %}
+				{% else %}
+				<div><h1>oops!  not found</h1></div>
+				{% endif %}
+			
+{% endblock %}

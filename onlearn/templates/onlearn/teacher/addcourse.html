@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}course{% endblock %}
+{% block body %}
+
+<!-- Page info -->
+<div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/1.jpg' %}">
+	<div class="container">
+		<div class="site-breadcrumb">
+			<a href="#">Home</a>
+			<span>course_details</span>
+		</div>
+	</div>
+</div>
+<!-- Page info end -->
+<section class="signup-section spad">
+		<div class="signup-bg set-bg" data-setbg="/static/img/signup-bg.jpg" style="background-image: url(&quot;/static/img/signup-bg.jpg&quot;);"></div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="signup-warp">
+						<div class="section-title text-white text-left">
+							<h2>upload your course</h2>
+							<p>if you are expert and have a passion in teaching jump and provide your own courses in onlearn and make money and impact</p>
+						</div>
+						<!-- signup form -->
+						<form class="signup-form" action="{% url 'courseadd' %} " method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+
+
+							<input type="text" placeholder="course Name" name="name">
+							<input type="text" placeholder="short_description" name="short_description">
+							<input type="text" placeholder="notes" name="notes">
+							<input type="text" placeholder="price" name="price">
+							<label for="v-upload" class="file-up-btn">Upload Course</label>
+							<input type="file" id="v-upload" name="video_lesson">
+							
+							<input type="submit" value="submit" class="site-btn">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+{% endblock %}

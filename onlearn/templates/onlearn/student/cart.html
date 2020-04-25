@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}cart{% endblock %}
+{% block body %}
+
+	<!-- Page info -->
+<div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/1.jpg' %}">
+<div class="container">
+<div class="site-breadcrumb">
+<a href="#">Home</a>
+<span>cart</span>
+</div>
+</div>
+</div>
+<!-- Page info end -->
+	
+	<!-- Page -->
+	<section class="contact-page spad pb-0">
+		<div class="container">
+			<div class="row">
+				
+					
+						
+				<!-- course -->
+
+				
+				{% for i in datas %}
+				<div class="mix col-lg-3 col-md-4 col-sm-6 finance">
+				
+					<div class="course-item">
+						<div class="course-thumb set-bg" data-setbg="{{i.course.thumbnail.url}}">
+							<div class="price">{{i.course.price}}</div>
+						</div>
+						<div class="course-info">
+							<div class="course-text">
+								
+								
+								<p>Lorem ipsum dolor sit amet, consectetur</p>
+								
+
+								<div class="students">{{i.course.title}}</div>
+							</div>
+							<div class="course-author">
+								<div class="ca-pic set-bg" data-setbg="{% static 'img/authors/1.jpg' %}"></div>
+								<p>William Parker, <span>Developer</span></p>
+								<a href="{% url 'buy' i.course.pk %}"class="site-btn buy-btn">buy</a><br><br>
+								<a href="{% url 'cart_delete' i.pk %}" class="site-btn btn-dark mr-3 mb-3 mb-md-0">delete</a>
+
+							</div>						
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+				
+				<div class="col-lg-4">
+					<div class="contact-info-area">
+						<div class="section-title text-left p-0">
+							<h2>buy Info</h2>
+							<p>Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendi sse cursus faucibus finibus.</p>
+						</div>
+						<div class="phone-number">
+							<span>Direct Line</span>
+							<h2>+53 345 7953 32453</h2>
+						</div>
+						<ul class="contact-list">
+							<li>1481 Creekside Lane <br>Avila Beach, CA 931</li>
+							<li>+53 345 7953 32453</li>
+							<li>yourmail@gmail.com</li>
+						</ul>
+						<div class="social-links">
+							<a href="#"><i class="fa fa-pinterest"></i></a>
+							<a href="#"><i class="fa fa-facebook"></i></a>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+							<a href="#"><i class="fa fa-dribbble"></i></a>
+							<a href="#"><i class="fa fa-behance"></i></a>
+							<a href="#"><i class="fa fa-linkedin"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="map-canvas"></div>
+		</div>
+	</section>
+	<!-- Page end -->
+
+
+ 
+</div>
+</div>
+</div>
+</div>
+</section>
+
+{% endblock %}

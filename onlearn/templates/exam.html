@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}course{% endblock %}
+{% block body %}
+
+<!-- Page info -->
+<div class="page-info-section set-bg" data-setbg="{% static 'img/page-bg/1.jpg' %}">
+	<div class="container">
+		<div class="site-breadcrumb">
+			<a href="#">Home</a>
+			<span>exam</span>
+		</div>
+	</div>
+</div>
+<!-- Page info end -->
+{% for question in questions %} 
+<h1 style="color:#CC0000; font-size:300%;text-align:center;">{{question.course.title}} course exam</h1>
+<b><body style="color:#000066;background-image:url(''); font-size:120%;">
+<form action= "{% url 'result' %}" method = "POST" >
+          
+<div class = 'question'>Q.{{ question.question }} </div><br>
+<div id= "choices" class='select'>
+    <input type = "radio" name="{{question.id}}" value="{{question.choice_one}}">{{question.choice_one}}<br>
+    <input type = "radio" name="{{question.id}}" value="{{question.choice_two}}">{{question.choice_two}}<br>
+    <input type = "radio" name="{{question.id}}" value="{{question.choice_three}}">{{question.choice_three}}<br>
+    <input type = "radio" name="{{question.id}}" value="{{question.choice_four}}">{{question.choice_four}}<br>
+    <input type = "radio" name="{{question.id}}" value="{{question.choice_five}}">{{question.choice_five}}<br>
+</div>
+<br> 
+    {% endfor %}
+<div style="text-align:center"> <input style="padding: 10px 35px;font-size:120%;cursor: pointer;" type="submit" class="submit" id="submit" value="Submit"/></div>
+    {% csrf_token %}
+</form>
+
+{% endblock %}
